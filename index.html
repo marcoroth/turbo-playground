@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Turbo Playground</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="module" src="/index.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      turbo-frame > div {
+        padding: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      a {
+        text-decoration: underline !important;
+      }
+    </style>
+
+    <script defer>
+      document.addEventListener("turbo:load", () => {
+        document.getElementById("url").textContent = window.location.href
+      }, false)
+
+      document.addEventListener("click", () => {
+        document.getElementById("url").textContent = window.location.href
+      }, false)
+      window.addEventListener("popstate", () => {
+        document.getElementById("url").textContent = window.location.href
+      }, false)
+    </script>
+
+  </head>
+
+  <body>
+    <div class="container mx-auto px-16">
+      <h1 class="text-lg font-bold mt-4">Turbo Frames URL hash history</h1>
+
+      <turbo-frame id="frame_one">
+        <div class="bg-blue-400 rounded-lg">
+          <h2 class="text-lg font-bold">Blue Start Frame 1 - no <code>[src]</code></h2>
+
+          <a href="/src/red.html">To Red Page</a>
+        </div>
+      </turbo-frame>
+
+      <turbo-frame id="frame_two" data-turbo-frame="advance">
+        <div class="bg-blue-400 rounded-lg">
+          <h2 class="text-lg font-bold">Blue Start Frame 2</h2>
+
+          <a href="/src/yellow.html">To Yellow Page</a>
+        </div>
+      </turbo-frame>
+
+      <p class="mt-8"><b>Current URL:</b></p>
+      <div id="url" class="w-100 my-2"></div>
+
+      <button onclick="Turbo.visit('/')" class="mt-4 mx-auto bg-blue-800 text-white rounded hover:bg-blue-700 px-4 py-1 text-center">Back to Start (Blank)</button>
+      <button onclick="Turbo.visit('/#frame_two_frame_src=%2Fsrc%2Fyellow.html')" class="mt-4 mx-auto bg-blue-800 text-white rounded hover:bg-blue-700 px-4 py-1 text-center">Back to Start (Prepopulated)</button>
+
+      <br/>
+      <br/>
+
+      <h4 class="font-bold mt-4 mb-2">Pages:</h4>
+
+      <a href="/src/red.html" class="">Red Page</a><br/>
+      <a href="/src/green.html" class="">Green Page</a><br/>
+      <a href="/src/purple.html" class="">Purple Page</a><br/>
+      <a href="/src/yellow.html" class="">Yellow Page</a><br/>
+      <a href="/src/black.html" class="">Black Page</a><br/>
+      <a href="/src/orange.html" class="">Orange Page</a><br/>
+    </div>
+  </body>
+</html>

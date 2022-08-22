@@ -1,0 +1,20 @@
+{
+  "name": "turbo-playground",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A playground for Turbo",
+  "license": "MIT",
+  "repository": "https://github.com/hotwired/turbo",
+  "dependencies": {
+    "@hotwired/turbo": "7.2.0-beta.2"
+  },
+  "scripts": {
+    "start": "yarn run dev",
+    "dev": "vite",
+    "build": "vite build && cp -R src dist/src",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^3.0.2"
+  }
+}
