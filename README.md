@@ -22,4 +22,4 @@ yarn install
 yarn dev
 ```
 
-Open http://localhost:3000/
+Open http://localhost:5173/
